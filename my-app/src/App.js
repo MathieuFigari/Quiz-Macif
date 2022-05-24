@@ -5,6 +5,7 @@ import { db } from './firebase-config';
 import { collection, getDocs } from "firebase/firestore";
 
 import Quiz from './Quiz';
+import EndQuiz from './EndQuiz';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
   const [goodAnswer, setGoodAnswer ] = useState("")
   const [btnDisable, setBtnDisable] = useState(true)
   const [endQuiz, setEnd] = useState(false)
+  const[score, setScore] = useState(0)
 
  const nextQuestion = () => {
      if(quizIndex === theQuiz.length - 1){
@@ -27,19 +29,19 @@ function App() {
      } else {
          setIndex(quizIndex + 1);
      }
+
      if(userAnswer === goodAnswer) {
-       setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answer : userAnswer}])
-     } else {
-       setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer}])
-     }
+      setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true}])
+       setScore(score + 1)
+  } else {
+    setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false}])
+  }
 
+  setBtnDisable(true)
 
- }
+  
+}
 
-
- 
-   console.log(userQuiz)
- 
 
  
 
@@ -64,10 +66,11 @@ function App() {
   );
 
 
+
   return (
     <div className="App">
       { 
-      theQuiz.length > 1 &&
+      theQuiz.length > 1  && endQuiz === false &&
       <Quiz quiz={theQuiz}
       nextQuestion={nextQuestion}
       quizIndex={quizIndex}
@@ -76,6 +79,12 @@ function App() {
       submitAnswer={submitAnswer}
       setGoodAnswer={setGoodAnswer}
       />
+}
+
+{
+  endQuiz === true &&
+  
+  <EndQuiz userQuiz={userQuiz} score={score}/>
 }
     </div>
   );
