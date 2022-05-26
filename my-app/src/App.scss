@@ -121,3 +121,10 @@ footer{
 .btnDisable{
   visibility: hidden;
 }
+
+@media (max-width: 1300px) {
+  .containerQ{
+    width: 80%;
+    height: 75vh;
+  }
+ }
