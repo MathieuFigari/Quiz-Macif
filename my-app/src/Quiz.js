@@ -2,8 +2,11 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import Answers from './Answers';
 
-const Quiz = ({ quiz, quizIndex, nextQuestion, userAnswer, btnDisable, submitAnswer, setGoodAnswer }) => {
+const Quiz = ({ quiz, quizIndex, nextQuestion, btnDisable, submitAnswer, setGoodAnswer }) => {
 
+
+
+    const className = btnDisable === true ? "btnDisable validateBtn inline-block px-6 py-2.5 bg-blue-600 text-white font-xl text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mt-4" : "validateBtn inline-block px-6 py-2.5 bg-blue-600 text-white font-xl text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out mt-4"
 
 
     useEffect(() => {
@@ -21,10 +24,10 @@ const Quiz = ({ quiz, quizIndex, nextQuestion, userAnswer, btnDisable, submitAns
 
 
 
-        <div className='quiz'>
-<div>{quiz[quizIndex].question}</div>
+        <div className='flex containerQ mx-auto justify-center gap-10 px-6 py-6'>
+<div className='question'>{quiz[quizIndex].question}</div>
 
-            <div className='props'>
+            <div className='containerP mx-auto flex flex-col gap-8'>
 
             {
                 quiz[quizIndex].answers.map(
@@ -32,7 +35,6 @@ const Quiz = ({ quiz, quizIndex, nextQuestion, userAnswer, btnDisable, submitAns
                         <Answers 
                         key={option}
                         option={option}
-                        userAnswer={userAnswer}
                         submitAnswer={submitAnswer}
                         />
                     )
@@ -40,15 +42,26 @@ const Quiz = ({ quiz, quizIndex, nextQuestion, userAnswer, btnDisable, submitAns
             }
             </div>
 
-            <button
-            type='button' 
-            onClick={nextQuestion} className='validate'
-            disabled={btnDisable}
-            >
-            Valider
-            </button>
+            
+            
 
-        </div>
+            <div className="flex space-x-2 justify-center">
+                <button 
+                type="button"
+                data-mdb-ripple="true"
+                data-mdb-ripple-color="light"
+                className={className}
+                onClick={nextQuestion}
+                disabled={btnDisable}
+
+                >Valider</button>
+                </div>
+
+            
+            
+
+
+            </div>
         
 
 
@@ -69,7 +82,6 @@ quiz: PropTypes.arrayOf(
 ),
 nextQuestion: PropTypes.func.isRequired,
 quizIndex: PropTypes.number.isRequired,
-userAnswer: PropTypes.string.isRequired,
 btnDisable: PropTypes.bool.isRequired,
 submitAnswer: PropTypes.func.isRequired,
 setGoodAnswer: PropTypes.func.isRequired

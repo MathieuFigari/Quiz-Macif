@@ -1,25 +1,11 @@
 .App {
-  text-align: center;
-}
-
-.quiz{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-}
-
-.props{
-  margin: auto;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  flex-wrap: wrap;
-  gap: 2rem;
   
+  position: relative;
+  text-align: center;
+  background-color: #0a2d82;
 }
+
+
 
 .answer{
   min-width: 38%;
@@ -42,6 +28,9 @@
       }
 }
 
+.header{
+  margin-bottom: 2rem;
+}
 
 .selected{
   max-width: 300px;
@@ -52,4 +41,83 @@
   cursor: pointer;
   color: white;
   border: none;
+}
+
+.logo-macif{
+  width: 200px;
+}
+
+h1{
+  width: 50%;
+  color: #0a3084;
+}
+
+.carousel__photos{
+  height: 65vh;
+}
+
+.containerH {
+  width: 75%;
+  
+}
+
+footer{
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.btn__start{
+  position: absolute;
+  top:  47%;
+  left: 43%;
+  
+}
+
+.containerQ{
+  box-shadow: -5px 6px 10px 12px rgba(0, 0, 0, 0.17);
+  background: #f3f3f3;
+  width: 60%;
+  height: 67vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: .75rem;
+
+}
+
+.containerP{
+  width: 70%;
+}
+
+.form-check-input{
+  width: 2rem;
+  height: 2rem;
+
+}
+
+
+.form-check{
+  display: flex;
+  align-items: center;
+}
+
+.question{
+  text-decoration: underline;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+.validateBtn{
+  font-size: 1.75rem;
+}
+
+.form-check-label{
+  text-align: left;
+  flex-basis: 75%;
+  font-size: 1.15rem;
+}
+
+.btnDisable{
+  visibility: hidden;
 }

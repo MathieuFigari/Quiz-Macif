@@ -4,8 +4,8 @@ import { useEffect, useState} from "react";
 import { db } from './firebase-config';
 import { collection, getDocs } from "firebase/firestore";
 
-import Quiz from './Quiz';
-import EndQuiz from './EndQuiz';
+
+import FullSite from './FullSite';
 
 function App() {
 
@@ -19,6 +19,7 @@ function App() {
   const [btnDisable, setBtnDisable] = useState(true)
   const [endQuiz, setEnd] = useState(false)
   const[score, setScore] = useState(0)
+  const [startQuiz, setStartQuiz] = useState(false)
 
  const nextQuestion = () => {
      if(quizIndex === theQuiz.length - 1){
@@ -43,7 +44,12 @@ function App() {
 }
 
 
- 
+const quizStart = () => {
+  setStartQuiz(true)
+} 
+
+
+ console.log(theQuiz)
 
  const submitAnswer = (selectedAnswer) => {
    setUserAnswer(selectedAnswer);
@@ -69,24 +75,27 @@ function App() {
 
   return (
     <div className="App">
-      { 
-      theQuiz.length > 1  && endQuiz === false &&
-      <Quiz quiz={theQuiz}
+
+{ 
+
+theQuiz.length > 1 &&
+      <FullSite  quiz={theQuiz}
       nextQuestion={nextQuestion}
       quizIndex={quizIndex}
-      userAnswer={userAnswer}
       btnDisable={btnDisable}
       submitAnswer={submitAnswer}
       setGoodAnswer={setGoodAnswer}
+      startQuiz={startQuiz}
+      endQuiz={endQuiz}
+      userQuiz={userQuiz}
+      score={score}
+      quizStart={quizStart}
       />
+
 }
 
-{
-  endQuiz === true &&
-  
-  <EndQuiz userQuiz={userQuiz} score={score}/>
-}
-    </div>
+
+</div>
   );
 }
 

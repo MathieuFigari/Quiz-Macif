@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 
 
-const Answers = ({ option, userAnswer, submitAnswer }) => {
+const Answers = ({ option, submitAnswer }) => {
 
-   
-
-
+    console.log(option.index)
 
     return(
-        <div onClick={() => submitAnswer(option)} className={`answer ${userAnswer === option ? 'selected' : null}`}>
-            {option}
-        </div>
+        <div className="form-check flex gap-4">
+        <input value={option} onChange={( e) => submitAnswer(e.target.value)}  className="form-check-input appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+        <label className=" form-check-label inline-block text-gray-800" htmlFor="flexRadioDefault1">
+          {option}
+        </label>
+      </div>
 
     )
 
@@ -19,9 +20,10 @@ const Answers = ({ option, userAnswer, submitAnswer }) => {
 
 Answers.propTypes = {
 option: PropTypes.string.isRequired,
-userAnswer: PropTypes.string.isRequired,
 submitAnswer: PropTypes.func.isRequired
 }
+
+
 
 
 export default Answers;

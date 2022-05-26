@@ -2,14 +2,16 @@ import PropTypes from 'prop-types';
 import QuestionCorrection from "./QuestionCorrection"
 
 
-const EndQuiz = ({ userQuiz }) => {
+const EndQuiz = ({ userQuiz, score }) => {
 
-   console.log(userQuiz)
+   
 
 
 
     return(
         <div className='correction'>
+            <div>{`Votre Score : ${score}/${userQuiz.length}`}</div>
+
             {
                 userQuiz.map( (question) => 
                 <QuestionCorrection
@@ -33,7 +35,8 @@ EndQuiz.propTypes = {
             answerUser: PropTypes.string.isRequired,
             answerGood: PropTypes.string.isRequired
         })
-    ).isRequired
+    ).isRequired,
+    score: PropTypes.number.isRequired
 }
 
 
