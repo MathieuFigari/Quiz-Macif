@@ -51,6 +51,8 @@ const quizStart = () => {
 const homeReturn = () => {
   setEnd(false)
   setStartQuiz(false)
+  setUserQuiz([])
+  setScore(0)
 }
 
  const submitAnswer = (selectedAnswer) => {

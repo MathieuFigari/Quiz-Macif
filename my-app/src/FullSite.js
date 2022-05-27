@@ -13,6 +13,7 @@ const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, qui
     return(
 
         <>
+        <div id='contain_primair'>
         
         <Header />
 
@@ -43,6 +44,8 @@ const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, qui
     
     <EndQuiz homeReturn={homeReturn} userQuiz={userQuiz} score={score}/>
   }
+
+</div>
   
   <Footer />
       
