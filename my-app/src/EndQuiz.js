@@ -21,6 +21,7 @@ console.log(userQuiz)
                 <QuestionCorrection
                  key={question.id}
                  question={question}
+                
                 /> )
             }
             </Accordion>

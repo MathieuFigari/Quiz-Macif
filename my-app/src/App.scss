@@ -102,6 +102,16 @@ footer{
 .form-check{
   display: flex;
   align-items: center;
+
+  &-label{
+    cursor: pointer;
+  }
+  
+}
+
+.yourAnswer{
+  font-style: italic;
+  text-decoration: underline;
 }
 
 .question{
@@ -118,7 +128,7 @@ footer{
 
 .form-check-label{
   text-align: left;
-  flex-basis: 75%;
+  flex-basis: 95%;
   font-size: 1.15rem;
 }
 
@@ -128,7 +138,7 @@ footer{
 
 .containerC{
   box-shadow: -5px 6px 10px 12px rgba(0, 0, 0, 0.17);
-  background: #f3f3f3;
+  background: white;
   width: 60%;
   max-width: 1400px;
   display: flex;
@@ -139,6 +149,8 @@ footer{
 .itemCor{
   border-bottom: 2px solid black;
   margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 100;
 }
 
 .questionCorrection{
@@ -155,7 +167,7 @@ footer{
 }
 
 .answerUse{
-  flex-basis: 80%;
+  flex-basis: 95%;
   margin-left: 1rem;
 }
 
@@ -178,6 +190,18 @@ footer{
   font-size: 1.5rem;
   font-weight: bold;
   border: 1px solid black;
+}
+
+.goodAnswerIs{
+  font-style: italic;
+  text-decoration: underline;
+  margin-bottom: 0.3rem;
+}
+
+.theGoodAnswer{
+  text-align: left;
+  margin-bottom: 0.8rem;
+  
 }
 
 @media (max-width: 1300px) {

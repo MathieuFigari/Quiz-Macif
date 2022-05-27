@@ -8,21 +8,26 @@ const QuestionCorrection = ({ question }) => {
     const like = question.good === true ? "ant-design:like-filled" : "ant-design:dislike-filled"
     const color = question.good === true ? "green" : "red"
 
-    const [open, setOpen] = useState(false)
+    const [open, setOpen] = useState('')
 
-    const plusOrMoins = open === true ? "Moins" : "plus d'infos"
-   // const arrow = open === true ? "bi:arrow-up" : "akar-icons:arrow-down"
+    const plusOrMoins = open === question.id ? "Moins" : " et pour plus d'infos"
 
-    console.log(open)
-
-
+    
 
     return(
-        <Accordion.Item onClick={() => setOpen(!open)} className='itemCor' eventKey={question.id}>
+        <Accordion.Item id={question.id}  className={`itemCor ${question.id}`}  eventKey={question.id}>
         <Accordion.Header > 
-            <div className='questionCor'>{question.question}</div>  
-            <div className='questionCorrection'><span class="iconify pouceVert" data-icon={like} style={{color: `${color}`}}></span><div className='answerUse'>{question.answerUser}</div></div>
-            <div className='infosPlus'>{plusOrMoins} </div>
+            <div className={`questionCor ${question.id}`}>{question.question}</div>
+            <div className='yourAnswer'>Votre Réponse :</div>  
+            <div className={`questionCorrection ${question.id}`}><span class="iconify pouceVert" data-icon={like} style={{color: `${color}`}}></span><div className={`answerUse ${question.id}`}>{question.answerUser}</div></div>
+            {
+                question.good === false && 
+                <div>
+                <div className='goodAnswerIs'> La bonne réponse était :</div>
+                <div className='theGoodAnswer'>{question.answerGood}</div>
+                </div>
+            }
+            <div className={`infosPlus ${question.id}`}>{plusOrMoins} </div>
         </Accordion.Header>
         <Accordion.Body>
             <div className='explanation'>
