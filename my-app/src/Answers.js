@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Answers = ({ option, submitAnswer }) => {
 
-    console.log(option.index)
+  
 
     return(
         <div className="form-check flex gap-4">

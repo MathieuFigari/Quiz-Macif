@@ -7,7 +7,7 @@ import EndQuiz from './EndQuiz';
 
 
 
-const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, quizIndex, btnDisable, setGoodAnswer, userQuiz, score, endQuiz }) => {
+const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, quizIndex, btnDisable, setGoodAnswer, userQuiz, score, endQuiz, homeReturn }) => {
 
 
     return(
@@ -41,7 +41,7 @@ const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, qui
   {
     endQuiz === true &&
     
-    <EndQuiz userQuiz={userQuiz} score={score}/>
+    <EndQuiz homeReturn={homeReturn} userQuiz={userQuiz} score={score}/>
   }
   
   <Footer />
@@ -73,7 +73,8 @@ quizIndex: PropTypes.number.isRequired,
 btnDisable: PropTypes.bool.isRequired,
 submitAnswer: PropTypes.func.isRequired,
 setGoodAnswer: PropTypes.func.isRequired,
-score: PropTypes.number.isRequired
+score: PropTypes.number.isRequired,
+homeReturn: PropTypes.func.isRequired
 
 
 }

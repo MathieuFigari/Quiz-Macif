@@ -32,10 +32,10 @@ function App() {
      }
 
      if(userAnswer === goodAnswer) {
-      setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true}])
+      setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true, explanation: theQuiz[quizIndex].explanation}])
        setScore(score + 1)
   } else {
-    setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false}])
+    setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false, explanation: theQuiz[quizIndex].explanation}])
   }
 
   setBtnDisable(true)
@@ -48,8 +48,10 @@ const quizStart = () => {
   setStartQuiz(true)
 } 
 
-
- console.log(theQuiz)
+const homeReturn = () => {
+  setEnd(false)
+  setStartQuiz(false)
+}
 
  const submitAnswer = (selectedAnswer) => {
    setUserAnswer(selectedAnswer);
@@ -71,8 +73,7 @@ const quizStart = () => {
   []
   );
 
-
-
+  
   return (
     <div className="App">
 
@@ -90,6 +91,7 @@ theQuiz.length > 1 &&
       userQuiz={userQuiz}
       score={score}
       quizStart={quizStart}
+      homeReturn={homeReturn}
       />
 
 }

@@ -77,7 +77,6 @@ footer{
   box-shadow: -5px 6px 10px 12px rgba(0, 0, 0, 0.17);
   background: #f3f3f3;
   width: 60%;
-  height: 67vh;
   display: flex;
   flex-direction: column;
   border-radius: .75rem;
@@ -122,9 +121,66 @@ footer{
   visibility: hidden;
 }
 
+.containerC{
+  box-shadow: -5px 6px 10px 12px rgba(0, 0, 0, 0.17);
+  background: #f3f3f3;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  border-radius: .75rem;
+}
+
+.itemCor{
+  border-bottom: 2px solid black;
+  margin-bottom: 0.5rem;
+}
+
+.questionCorrection{
+  text-align: left;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.questionCor{
+  text-align: left;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.answerUse{
+  flex-basis: 80%;
+  margin-left: 1rem;
+}
+
+.infosPlus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-style: italic;
+}
+
+.explanation{
+  margin: 1rem auto 1rem;
+  text-align: left;
+}
+
+.score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
 @media (max-width: 1300px) {
   .containerQ{
     width: 80%;
-    height: 75vh;
+  }
+
+  .containerC{
+    width: 80%;
+    
   }
  }
