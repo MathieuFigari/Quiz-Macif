@@ -11,7 +11,7 @@ const QuestionCorrection = ({ question }) => {
     const [open, setOpen] = useState(false)
 
     const plusOrMoins = open === true ? "Moins" : "plus d'infos"
-    const arrow = open === true ? "bi:arrow-up" : "akar-icons:arrow-down"
+   // const arrow = open === true ? "bi:arrow-up" : "akar-icons:arrow-down"
 
     console.log(open)
 
