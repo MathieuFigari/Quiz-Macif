@@ -2,14 +2,19 @@
 import './App.scss';
 import { useEffect, useState} from "react";
 import { db } from './firebase-config';
-import { collection, getDocs } from "firebase/firestore";
-
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import Header from './Header';
+import Footer from './Footer';
+import Supervise from './Supervise';
+import { BrowserRouter , Routes, Route  } from "react-router-dom"
 
 import FullSite from './FullSite';
+
 
 function App() {
 
   const quiz = collection(db, "quiz");
+  const quizUser = collection(db, "userQuiz")
 
   const [theQuiz, setQuiz] = useState([]);
   const [quizIndex, setIndex ] = useState(0);
@@ -20,6 +25,9 @@ function App() {
   const [endQuiz, setEnd] = useState(false)
   const[score, setScore] = useState(0)
   const [startQuiz, setStartQuiz] = useState(false)
+  const [getQuizUser, setQuizUser] = useState([])
+
+  const thequizIndex = theQuiz[quizIndex];
 
  const nextQuestion = () => {
      if(quizIndex === theQuiz.length - 1){
@@ -32,10 +40,12 @@ function App() {
      }
 
      if(userAnswer === goodAnswer) {
-      setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true, explanation: theQuiz[quizIndex].explanation}])
+       sendQuiz(true)
+      setUserQuiz(arr => [...arr, {question_id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true, explanation: theQuiz[quizIndex].explanation}]);
        setScore(score + 1)
   } else {
-    setUserQuiz(arr => [...arr, {id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false, explanation: theQuiz[quizIndex].explanation}])
+    sendQuiz(false)
+    setUserQuiz(arr => [...arr, {question_id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false, explanation: theQuiz[quizIndex].explanation}])
   }
 
   setBtnDisable(true)
@@ -60,6 +70,10 @@ const homeReturn = () => {
    setBtnDisable(false);
  }
 
+ const sendQuiz = async (good) => {
+   await addDoc(quizUser, {question_id: thequizIndex.id, good: good })
+ }
+
 
 
   useEffect(() => {
@@ -67,7 +81,12 @@ const homeReturn = () => {
       const data = await getDocs(quiz); 
       setQuiz(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
     };
+    const getUsersQuiz = async () => {
+      const dataQuiz = await getDocs(quizUser);
+      setQuizUser(dataQuiz.docs.map((document) => ({...document.data(), id: document.id})))
+    }
     getUsers();
+    getUsersQuiz()
     
 
   },
@@ -79,9 +98,13 @@ const homeReturn = () => {
   return (
     <div className="App">
 
-{ 
+<div id='contain_primair'>
 
-theQuiz.length > 1 &&
+    <Header />
+    <BrowserRouter>
+      <Routes>
+    
+      <Route path='/' element={theQuiz.length > 1 &&
       <FullSite  quiz={theQuiz}
       nextQuestion={nextQuestion}
       quizIndex={quizIndex}
@@ -94,10 +117,14 @@ theQuiz.length > 1 &&
       score={score}
       quizStart={quizStart}
       homeReturn={homeReturn}
-      />
+      />} />
+    <Route path='/admin' element={theQuiz.length >= 1 && <Supervise quiz={theQuiz} usersQuiz={getQuizUser}/>} />
+    </Routes>
+    </BrowserRouter> 
+</div>
 
-}
 
+<Footer />
 
 </div>
   );

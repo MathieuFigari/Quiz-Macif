@@ -196,11 +196,19 @@ footer{
   font-style: italic;
   text-decoration: underline;
   margin-bottom: 0.3rem;
+  
+}
+
+.accordion-button{
+  z-index: 20;
+  position: relative;
+  width: 100%;
 }
 
 .theGoodAnswer{
   text-align: left;
   margin-bottom: 0.8rem;
+  margin-left: 2rem;
   
 }
 

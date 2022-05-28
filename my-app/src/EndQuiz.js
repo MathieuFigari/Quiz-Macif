@@ -19,7 +19,7 @@ console.log(userQuiz)
             {
                 userQuiz.map( (question) => 
                 <QuestionCorrection
-                 key={question.id}
+                 key={question.question_id}
                  question={question}
                 
                 /> )
@@ -45,7 +45,7 @@ console.log(userQuiz)
 EndQuiz.propTypes = {
     userQuiz: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
+            question_id: PropTypes.string.isRequired,
             question: PropTypes.string.isRequired,
             answerUser: PropTypes.string.isRequired,
             answerGood: PropTypes.string.isRequired

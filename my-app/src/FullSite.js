@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import Quiz from './Quiz';
 import Home from './Home';
-import Footer from './Footer';
-import Header from './Header';
 import EndQuiz from './EndQuiz';
 
 
@@ -13,9 +11,9 @@ const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, qui
     return(
 
         <>
-        <div id='contain_primair'>
         
-        <Header />
+        
+        
 
 
         { 
@@ -44,12 +42,8 @@ const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, qui
     
     <EndQuiz homeReturn={homeReturn} userQuiz={userQuiz} score={score}/>
   }
-
-</div>
   
-  <Footer />
-      
-  
+    
       </>
 
     )
