@@ -25,11 +25,11 @@ const QuestionPercent = ({good_answer, answers ,id, question, usersQuiz}) => {
 
     return(
         <>
-       <div style={{textAlign: "left"}}>{question}</div>
+       <div style={{fontWeight: "bold", color:"#0a2d82", textAlign: "left"}}>{question}</div>
        { 
        percent ?
-       <div style={{border:"1px solid black"}} class="w-full bg-gray-200 rounded-full">
-        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{fontSize: "1rem", padding:"0.5rem", width: `${percent}%`}}>{percent}% de bonnes réponses</div>
+       <div  class="w-full bg-gray-200 rounded-full">
+        <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{color: "white", background: "#47d037", fontSize: "1rem", padding:"0.5rem", width: `${percent}%`}}>{percent}% de bonnes réponses</div>
         </div>
 
         : ""
