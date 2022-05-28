@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 
 
 const Supervise = ({quiz, usersQuiz}) => {
+    const users = usersQuiz.filter(user => user.question_id === quiz[0].id)
+    console.log(users.length)
 
 
     return(
         <div className='flex flex-col containerC mx-auto justify-center gap-4 px-6 py-6'>
+                <div style={{fontWeight: "bold", fontSize: "1.5rem", textDecoration: "underline"}}>{users.length} personnes ont répondu au quiz</div>
             { 
         quiz.map( 
             (quest) =>
