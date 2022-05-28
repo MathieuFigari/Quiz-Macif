@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 
 const Supervise = ({quiz, usersQuiz}) => {
     const users = usersQuiz.filter(user => user.question_id === quiz[0].id)
-    console.log(users.length)
+
+
+    
 
 
     return(

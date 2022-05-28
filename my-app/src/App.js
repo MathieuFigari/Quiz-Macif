@@ -71,7 +71,7 @@ const homeReturn = () => {
  }
 
  const sendQuiz = async (good) => {
-   await addDoc(quizUser, {question_id: thequizIndex.id, good: good })
+   await addDoc(quizUser, {question_id: thequizIndex.id, good: good, userAnswer: userAnswer })
  }
 
 
