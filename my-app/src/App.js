@@ -1,17 +1,70 @@
 
 import './App.scss';
 import { useEffect, useState} from "react";
-import { db } from './firebase-config';
+import { db, auth } from './firebase-config';
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Header from './Header';
 import Footer from './Footer';
 import Supervise from './Supervise';
-import { BrowserRouter , Routes, Route  } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
+
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 import FullSite from './FullSite';
+import Login from './Login';
 
 
 function App() {
+
+  let navigate = useNavigate()
+
+  const[user, setUser] = useState( JSON.parse(localStorage.getItem('user')) || {} )
+  
+  
+  const [logEmail, setLogEmail] = useState("");
+  const [logPassWord, setLogPW] = useState("");
+  const [logged, setLoggin] = useState(false)
+  const [admin, setAdmin] = useState(false)
+
+ 
+
+
+  console.log(logged, admin)
+
+
+
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        logEmail,
+        logPassWord
+      );
+      setUser(user)
+      localStorage.setItem('user', JSON.stringify(user, admin));
+      setLoggin(true);
+      setLogPW("")
+    } catch (error) {
+      console.log(error.message);
+      localStorage.setItem('user', null);
+      JSON.parse(localStorage.getItem('user'));
+      alert("veuillez reessayer")
+    }
+  }
+
+  const logout = async () => {
+    try { 
+    await signOut(auth)
+    localStorage.removeItem('user');
+    setLoggin(false)
+    setAdmin(false)
+    setLogEmail("")
+    navigate("/")
+    } catch  (error){
+      console.log(error.message)
+    }
+
+  }
 
   const quiz = collection(db, "quiz");
   const quizUser = collection(db, "userQuiz")
@@ -26,6 +79,9 @@ function App() {
   const[score, setScore] = useState(0)
   const [startQuiz, setStartQuiz] = useState(false)
   const [getQuizUser, setQuizUser] = useState([])
+  
+
+  
 
   const thequizIndex = theQuiz[quizIndex];
 
@@ -33,6 +89,7 @@ function App() {
      if(quizIndex === theQuiz.length - 1){
          setIndex(0);
          setEnd(true)
+
 
 
      } else {
@@ -52,6 +109,12 @@ function App() {
 
   
 }
+
+
+
+
+
+
 
 
 const quizStart = () => {
@@ -86,7 +149,14 @@ const homeReturn = () => {
       setQuizUser(dataQuiz.docs.map((document) => ({...document.data(), id: document.id})))
     }
     getUsers();
-    getUsersQuiz()
+    getUsersQuiz();
+
+    if ( user.user !== undefined ) {
+      console.log(user)
+      setLoggin(true)
+    }
+
+  
     
 
   },
@@ -94,17 +164,30 @@ const homeReturn = () => {
   []
   );
 
+
+  
+  
+
   
   return (
     <div className="App">
 
 <div id='contain_primair'>
 
-    <Header />
-    <BrowserRouter>
-      <Routes>
+    <Header logout={logout} />
+    <div style={{display: "flex", alignItems: "center"}} className='second_contain'>
     
-      <Route path='/' element={theQuiz.length > 1 &&
+
+ 
+
+      <Routes>
+     
+
+    
+
+    
+      <Route path='/' element={
+       logged===true ? theQuiz.length > 1 &&
       <FullSite  quiz={theQuiz}
       nextQuestion={nextQuestion}
       quizIndex={quizIndex}
@@ -117,12 +200,37 @@ const homeReturn = () => {
       score={score}
       quizStart={quizStart}
       homeReturn={homeReturn}
-      />} />
-    <Route path='/admin' element={theQuiz.length >= 1 && <Supervise quiz={theQuiz} usersQuiz={getQuizUser}/>} />
-    </Routes>
-    </BrowserRouter> 
-</div>
+      logEmail={logEmail}
+      setAdmin={setAdmin}
+      admin={admin}
+      />
+        :
+        <Login  login={login} setLogEmail={setLogEmail} setLogPW={setLogPW}/>
+        
+    } 
+    
+      />
 
+
+      
+        
+
+
+    <Route
+    
+    path='/admin' element={
+      theQuiz.length >= 1 && admin && <Supervise logged={logged} admin={admin} quiz={theQuiz} usersQuiz={getQuizUser}/>
+      } />
+
+
+    </Routes>
+
+
+
+
+    
+</div>
+</div>
 
 <Footer />
 

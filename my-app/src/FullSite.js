@@ -3,9 +3,22 @@ import Quiz from './Quiz';
 import Home from './Home';
 import EndQuiz from './EndQuiz';
 
+import { useEffect } from 'react';
 
 
-const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, quizIndex, btnDisable, setGoodAnswer, userQuiz, score, endQuiz, homeReturn }) => {
+
+const FullSite = ({  admin, submitAnswer, quiz, startQuiz, quizStart, nextQuestion, quizIndex, btnDisable, setGoodAnswer, userQuiz, score, endQuiz, homeReturn, setAdmin, logEmail }) => {
+
+    useEffect(() => {
+
+        console.log(logEmail)
+      if(logEmail === "admin@macif.fr") setAdmin(true) 
+        
+    
+      },
+      // eslint-disable-next-line 
+      []
+      );
 
 
     return(
@@ -20,7 +33,7 @@ const FullSite = ({  submitAnswer, quiz, startQuiz, quizStart, nextQuestion, qui
   
         startQuiz === false &&
   
-        <Home quizStart={quizStart}/>
+        <Home  admin={admin} quizStart={quizStart}/>
   
         }
   

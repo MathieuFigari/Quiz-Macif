@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom"
 
 
-const Home = ({ quizStart }) => {
+const Home = ({ admin, quizStart }) => {
 
    
 
@@ -9,6 +10,12 @@ const Home = ({ quizStart }) => {
 
     return(
         <div className="containerH mx-auto ">
+          {  
+          admin === true &&
+          <Link to="admin">
+          <button type="button" class="inline-block px-6 py-2.5 bg-blue-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-500 hover:shadow-lg focus:bg-blue-500 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-600 active:shadow-lg transition duration-150 ease-in-out">Administration</button>
+          </Link>
+}
         <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
   <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
     <button
