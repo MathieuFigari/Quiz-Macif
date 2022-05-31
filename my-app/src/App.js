@@ -31,8 +31,6 @@ function App() {
  
 
 
-  console.log(logged, admin)
-
 
 
   const login = async () => {
@@ -160,7 +158,7 @@ const homeReturn = () => {
     getUsersQuiz();
 
     if ( user.user !== undefined ) {
-      console.log(user)
+      
       setLoggin(true)
 
       const mail = user.user

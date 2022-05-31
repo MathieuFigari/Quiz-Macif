@@ -6,9 +6,7 @@ import Accordion from "react-bootstrap/Accordion";
 
 const EndQuiz = ({homeReturn ,userQuiz, score }) => {
 
-   
 
-console.log(userQuiz)
 
     return(
         <div className='flex flex-col containerC mx-auto justify-center gap-4 px-6 py-6'>
