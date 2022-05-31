@@ -20,7 +20,7 @@ const Login = ({setLogPW, setLogEmail, login}) => {
                       type="text"
                       class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       id="exampleFormControlInput1"
-                      placeholder="Username"
+                      placeholder="Identifiant"
                     />
                   </div>
                   <div class="mb-4">
@@ -29,7 +29,7 @@ const Login = ({setLogPW, setLogEmail, login}) => {
                       type="password"
                       class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       id="exampleFormControlInput1"
-                      placeholder="Password"
+                      placeholder="Mot de Passe"
                     />
                   </div>
                   <div class="text-center pt-1 mb-12 pb-1">
@@ -41,7 +41,7 @@ const Login = ({setLogPW, setLogEmail, login}) => {
                       data-mdb-ripple-color="light"
                       style={{background: `linear-gradient(to right,#ee7724,#d8363a,#dd3675,#b44593)`}}
                     >
-                      Log in
+                      Se Connecter
                     </button>
                   </div>
 

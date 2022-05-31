@@ -11,7 +11,7 @@ const FullSite = ({  admin, submitAnswer, quiz, startQuiz, quizStart, nextQuesti
 
     useEffect(() => {
 
-        console.log(logEmail)
+        
       if(logEmail === "admin@macif.fr") setAdmin(true) 
         
     

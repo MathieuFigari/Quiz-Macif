@@ -1,6 +1,6 @@
 
 import './App.scss';
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { db, auth } from './firebase-config';
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Header from './Header';
@@ -15,6 +15,8 @@ import Login from './Login';
 
 
 function App() {
+
+  
 
   let navigate = useNavigate()
 
@@ -59,12 +61,18 @@ function App() {
     setLoggin(false)
     setAdmin(false)
     setLogEmail("")
+    setEnd(false)
+    setStartQuiz(false)
     navigate("/")
     } catch  (error){
       console.log(error.message)
     }
 
   }
+
+
+  
+
 
   const quiz = collection(db, "quiz");
   const quizUser = collection(db, "userQuiz")
@@ -154,6 +162,11 @@ const homeReturn = () => {
     if ( user.user !== undefined ) {
       console.log(user)
       setLoggin(true)
+
+      const mail = user.user
+
+      if(mail.email === "admin@macif.fr") setAdmin(true)
+     
     }
 
   
@@ -161,7 +174,7 @@ const homeReturn = () => {
 
   },
   // eslint-disable-next-line 
-  []
+  [userQuiz]
   );
 
 

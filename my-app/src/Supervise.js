@@ -12,10 +12,12 @@ const Supervise = ({quiz, usersQuiz}) => {
 const [users, setUsers] = useState(usersQuiz.filter(user => user.question_id === quiz[0].id))
 
 
+
+  
+
     useEffect(() => {
 
         setUsers(usersQuiz.filter(user => user.question_id === quiz[0].id))
-
 
       },
       // eslint-disable-next-line 
