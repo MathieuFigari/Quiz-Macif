@@ -7,6 +7,9 @@ const QuestionCorrection = ({ question }) => {
 
     const like = question.good === true ? "ant-design:like-filled" : "ant-design:dislike-filled"
     const color = question.good === true ? "green" : "red"
+
+
+    console.log(question.important)
     
 
     return(
@@ -27,6 +30,9 @@ const QuestionCorrection = ({ question }) => {
         <Accordion.Body>
             <div className='explanation'>
           {question.explanation}
+          </div>
+          <div style={{textAlign: "left", color: "red", fontStyle: "italic", fontWeight: "bold"}} className='important'>
+          {question.important}
           </div>
         </Accordion.Body>
       </Accordion.Item>

@@ -5,7 +5,15 @@
   min-height: 100vh;
 }
 
+.bgHome{
+  background: rgba(59, 59, 59, 0.4);
+  position: absolute; 
+  bottom: 65px;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-shadow : 2px 2px 5px black
 
+}
 
 .answer{
   min-width: 38%;

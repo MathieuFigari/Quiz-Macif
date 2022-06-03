@@ -12,7 +12,7 @@ const Footer = () => {
 
   <div className="text-center p-4" style={{backgroundColor: `rgba(${0}, ${0}, ${0}, ${0.2})`}}>
     © 2022 Copyright:
-    <a className="text-white" href="https://www.macif.fr">Macif</a>
+    <a className="text-white" href="https://www.ima.eu/fr/">DOPima</a>
   </div>
 </footer>
 

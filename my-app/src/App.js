@@ -88,6 +88,7 @@ function App() {
   
 
   
+  
 
   const thequizIndex = theQuiz[quizIndex];
 
@@ -104,20 +105,17 @@ function App() {
 
      if(userAnswer === goodAnswer) {
        sendQuiz(true)
-      setUserQuiz(arr => [...arr, {question_id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true, explanation: theQuiz[quizIndex].explanation}]);
+      setUserQuiz(arr => [...arr, {question_id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: true, important: theQuiz[quizIndex].important,  explanation: theQuiz[quizIndex].explanation}]);
        setScore(score + 1)
   } else {
     sendQuiz(false)
-    setUserQuiz(arr => [...arr, {question_id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false, explanation: theQuiz[quizIndex].explanation}])
+    setUserQuiz(arr => [...arr, {question_id : theQuiz[quizIndex].id, question : theQuiz[quizIndex].question, answerUser : userAnswer, answerGood : goodAnswer, good: false, important: theQuiz[quizIndex].important, explanation: theQuiz[quizIndex].explanation}])
   }
 
   setBtnDisable(true)
 
   
 }
-
-
-
 
 
 
@@ -163,7 +161,7 @@ const homeReturn = () => {
 
       const mail = user.user
 
-      if(mail.email === "admin@macif.fr") setAdmin(true)
+      if(mail.email === "admin@dopima.fr") setAdmin(true)
      
     }
 

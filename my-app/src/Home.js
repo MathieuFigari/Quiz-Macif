@@ -18,6 +18,10 @@ const Home = ({ admin, quizStart }) => {
 }
         <div id="carouselExampleCaptions" className="carousel slide relative" data-bs-ride="carousel">
   <div class="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
+    <div className='bgHome'>
+    <div style={{ textAlign: "justify", color : "white" }}>La MACIF commercialise une nouvelle offre mobilité (auto et 2 roues) pour les particuliers et les professionnels à compter du mardi 7 juin 2022. Les anciennes offres continueront de cohabiter avec la nouvelle offre mais seule cette dernière sera commercialisée à compter du 7 juin. Les formules de la nouvelle offre sont identifiables dans le fichier car leur appellation comporte toujours la mention 2022. <br/><br/>
+    Le quiz ci-après comporte 6 questions sous forme de QCM avec une seule bonne réponse. A l’issue du questionnaire, vous découvrirez votre score ainsi que le détail des réponses.</div>
+    </div>
     <button
       type="button"
       data-bs-target="#carouselExampleCaptions"
